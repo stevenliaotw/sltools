@@ -1,6 +1,7 @@
 Package: slTools
 Type: Package
 Title: A collection of tools by Steven Liao
+URL: https://github.com/stevenliaotw/slTools
 Version: 0.0.1
 Date: 2014-05-10
 Author: Steven Liao
