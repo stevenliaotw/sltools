@@ -8,8 +8,4 @@ Maintainer: Steven Liao <stevenliao@virginia.edu>
 Description: sltools provides an array tools including functions to combine
     multiple imputation model results that Zelig does not implement, and feed
     the results to the texreg package to facilitate presentation of results.
-Depends:
-    texreg,
-    ggplot2,
-    plyr
 License: GPL
