@@ -1,12 +1,12 @@
-#' A sltools function to combine glm model results fitted to multiply imputed datasets
+#' Combine glm model results fitted to multiply imputed datasets
 #' 
-#' This function allows you to combine glm results from the stats package, extract results for the texreg package, and also put into a data frame.
+#' This sltools function allows you to combine multiple imputation glm model results from the stats package, extract results for the texreg package, and also output summary tables.
 #' @param fitted.obj a list of glm fitted model outputs from the pscl package
 #' @export
 
 combineGlmMI <- function(fitted.obj = NULL) {
   # extract parameters
-  m = length(fitted.obj)
+  m <- length(fitted.obj)
   coef <- as.data.frame(laply(fitted.obj, function(x) coef(x))) 
   se <- as.data.frame(laply(fitted.obj, function(x) sqrt(diag(vcov(x))))) 
   n <- sapply(fitted.obj, function(x) nobs(x))
@@ -55,14 +55,14 @@ combineGlmMI <- function(fitted.obj = NULL) {
                      aic = mean(aic))
   
   # make list
-  list("Covariates" = rownames(coef.table),
-       "Coefficients" = coef.table[,1],
-       "Standard Errors" = coef.table[,2],
-       "p-values" = coef.table[,4],
+  list("var.names" = rownames(coef.table),
+       "coef" = coef.table[,1],
+       "se" = coef.table[,2],
+       "pvalue" = coef.table[,4],
        "n" = median(n),
-       "Log-Likelihood" = mean(loglik),
-       "AIC" = mean(aic),
-       "Summary Table" = coef.table,
+       "loglik" = mean(loglik),
+       "aic" = mean(aic),
+       "sum.table" = coef.table,
        "texreg" = texreg
   )
 }

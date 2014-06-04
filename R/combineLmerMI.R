@@ -1,7 +1,7 @@
-#' A sltools function to combine lmer model results fitted to multiply imputed datasets
+#' Combine lmer model results fitted to multiply imputed datasets
 #' 
-#' This function allows you to combine lmer results from the lme4 package, extract results for the texreg package, and also put into a data frame.
-#' @param fitted.obj a list of glm fitted model outputs from the pscl package
+#' This sltools function allows you to combine lmer results from the lme4 package, extract results for the texreg package, and also output a summary table.
+#' @param fitted.obj a list of lmer fitted model outputs from the lme4 package
 #' @export
 
 combineLmerMI <- function(fitted.obj = NULL) {
@@ -55,14 +55,14 @@ combineLmerMI <- function(fitted.obj = NULL) {
                      aic = mean(aic))
   
   # make list
-  list("Covariates" = rownames(coef.table),
-       "Coefficients" = coef.table[,1],
-       "Standard Errors" = coef.table[,2],
-       "p-values" = coef.table[,4],
+  list("var.names" = rownames(coef.table),
+       "coef" = coef.table[,1],
+       "se" = coef.table[,2],
+       "pvalue" = coef.table[,4],
        "n" = median(n),
-       "Log-Likelihood" = mean(loglik),
-       "AIC" = mean(aic),
-       "Summary Table" = coef.table,
+       "loglik" = mean(loglik),
+       "aic" = mean(aic),
+       "sum.table" = coef.table,
        "texreg" = texreg
   )
 }

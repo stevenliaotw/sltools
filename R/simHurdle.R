@@ -1,6 +1,6 @@
-#' A sltools function to simulate quantities of interest for hurdle models
+#' Simulate quantities of interest for hurdle models
 #' 
-#' This function simulates quantities of interests from a list of hurdle model outputs fitted to amelia MI objects.
+#' This sltools function simulates quantities of interests from a list of hurdle model outputs fitted to Amelia MI objects.
 #' @param data imputed datasets in amelia object
 #' @param x a vector of values for predictors
 #' @param x1 a second vector of values for predictors

@@ -6,7 +6,7 @@
 #' @param x1 a second vector of values for predictors
 #' @param coef a matrix of coefficients
 #' @param vcov a list of variance covariance matrices
-#' @param num number of simulations
+#' @param num number of simulations. Default = 10000.
 #' @export 
 qiLogit <- function(data = NULL, x = NULL, x1 = NULL, coef = NULL, vcov = NULL, num = 10000) {
   qi1 <- computeLogitEV(data, x, coef, vcov, num)

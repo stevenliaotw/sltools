@@ -1,4 +1,4 @@
-#' A sltools function to simulate quantities of interest for logit models
+#' Simulate quantities of interest for logit models
 #' 
 #' This function follows Zelig's simulation method and computes expected and predicted values for logit models fitted to multiply imputed datasets. 
 #' @param data imputed datasets in amelia object
@@ -9,14 +9,14 @@
 #' @export 
 
 computeLogitEV <- function(data = NULL, x = NULL, coef = NULL, vcov = NULL, num = NULL) {
-  #simulate parameter values from the multivariate normal distribution, num draws
+  # simulate parameter values from the multivariate normal distribution, num draws
   set.seed(1234)
   beta.draws <- NULL
   for(i in 1:length(data)) {
     beta.draws <- rbind(beta.draws, mvrnorm(num, as.numeric(coef[i,]), vcov[[i]]))
   }
   
-  #use some matrix algebra to calculate systematic component for each draw
+  # use some matrix algebra to calculate systematic component for each draw
   sys.comp <- as.matrix(x) %*% t(beta.draws)
   
   #for each draw caculate expected value (predicted probabilities) for logit

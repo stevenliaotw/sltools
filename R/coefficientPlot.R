@@ -1,6 +1,6 @@
-#' A sltools coefficient plotting function
+#' Plotting Coefficients and Confidence Intervals
 #' 
-#' This function allows you to extract coefficients from a list of models and create side-by-side coefplots.
+#' This sltools function allows you to extract coefficients from a list of models and create side-by-side coefplots.
 #' @param models a list of models
 #' @param alpha scalar of alpha
 #' @param model.names list of model names

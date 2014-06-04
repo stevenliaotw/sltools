@@ -1,4 +1,4 @@
-#' A sltools function to simulate first differences for negative binomial models
+#' Simulate first differences for negative binomial models
 #' 
 #' This function uses the \code{computeNegBinEV} function to simulate expected values, predicted values, and first differences for negative binomial models.
 #' @param data imputed datasets in amelia object
@@ -6,7 +6,7 @@
 #' @param x1 a second vector of values for predictors
 #' @param coef a matrix of coefficients
 #' @param vcov a list of variance covariance matrices
-#' @param num number of simulations
+#' @param num number of simulations. Default = 10000.
 #' @param theta a vector of theta parameters from each fitted negative binomial model results
 #' @export 
 qiNegBin <- function(data = NULL, x = NULL, x1 = NULL, coef = NULL, vcov = NULL, num = 10000, theta = NULL) {

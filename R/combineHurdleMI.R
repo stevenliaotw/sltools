@@ -1,12 +1,12 @@
-#' A sltools function to combine hurdle model results fitted to multiply imputed datasets
+#' Combine hurdle model results fitted to multiply imputed datasets
 #' 
-#' This function allows you to combine MI hurdle results from the pscl package, extract results for the texreg package, and also put into a data frame.
-#' @param fitted.obj a list of hurdle fitted model outputs from the pscl package
+#' This sltools function allows you to combine multiple imputation hurdle model results from the pscl package, extract results for the texreg package, and also output summary tables.
+#' @param fitted.obj a list of hurdle fitted model outputs from the pscl package. For example, llply(data.mi$imputations, function(x) return(hurdle(y ~ x, dist = "negbin", zero.dist = "binomial", link = "logit", data = x)
 #' @export
 
 combineHurdleMI <- function(fitted.obj = NULL) {
   # extract parameters
-  m = length(fitted.obj)
+  m <- length(fitted.obj)
   coef.count <- as.data.frame(laply(fitted.obj, function(x) coef(x, model = "count"))) 
   se.count <- as.data.frame(laply(fitted.obj, function(x) sqrt(diag(vcov(x, model = "count"))))) 
   coef.zero <- as.data.frame(laply(fitted.obj, function(x) coef(x, model = "zero")))
@@ -47,6 +47,7 @@ combineHurdleMI <- function(fitted.obj = NULL) {
   nu.count <- (m - 1)*(1 + U.count/((1 + 1/m)*B.count))^2
   nu.zero <- (m - 1)*(1 + U.zero/((1 + 1/m)*B.zero))^2
   
+  # create table for parameters
   coef.table <- matrix(NA, nrow = rows, ncol = 8)
   dimnames(coef.table) <- list(rownames(coef.count),
                                c("Zero:Coef", "Zero:Std. Error", "Zero:t-stat", "Zero:p-value", "Count:Coef", "Count:Std. Error", "Count:t-stat", "Count:p-value"))
@@ -76,18 +77,18 @@ combineHurdleMI <- function(fitted.obj = NULL) {
                           aic = mean(aic))
   
   # make list
-  list("Covariates" = rownames(coef.table),
-       "Zero Component Coefficients" = coef.table[,1],
-       "Zero Component Standard Errors" = coef.table[,2],
-       "Zero Component p-values" = coef.table[,4],
-       "Count Component Coefficients" = coef.table[,5],
-       "Count Component Standard Errors" = coef.table[,6],
-       "Count Component p-values" = coef.table[,8],
+  list("var.names" = rownames(coef.table),
+       "zero.coef" = coef.table[,1],
+       "zero.se" = coef.table[,2],
+       "zero.pvalue" = coef.table[,4],
+       "count.coef" = coef.table[,5],
+       "count.se" = coef.table[,6],
+       "count.pvalue" = coef.table[,8],
        "n" = median(n),
-       "Log-Likelihood" = mean(loglik),
-       "AIC" = mean(aic),
-       "Theta" = mean(theta),
-       "Summary Table" = coef.table,
+       "loglik" = mean(loglik),
+       "aic" = mean(aic),
+       "theta" = mean(theta),
+       "sum.table" = coef.table,
        "texreg.zero" = texreg.zero,
        "texreg.count" = texreg.count,
        "dof.zero" = nu.zero,

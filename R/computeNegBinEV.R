@@ -1,6 +1,6 @@
-#' A sltools function to simulate quantities of interest for negative binomial models
+#' Simulate quantities of interest for negative binomial models
 #' 
-#' This function follows Zelig's simulation method and computes expected and predicted values for negative binomial models fitted to multiply imputed datasets. 
+#' This sltools function follows Zelig's simulation method and computes expected and predicted values for negative binomial models fitted to multiply imputed datasets. 
 #' @param data imputed datasets in amelia object
 #' @param x a vector of values for predictors
 #' @param coef a matrix of coefficients

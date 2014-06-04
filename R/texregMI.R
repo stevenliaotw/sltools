@@ -1,4 +1,4 @@
-#' A sltools function to extract and create a new texreg class
+#' texreg extracting function for models fitted to multiply imputed data
 #' 
 #' This function extracts parameters from multiple imputation objects and stores them in a new texreg object called "texregMI," which feeds into the texreg package.
 #' @param names vector of variable names
