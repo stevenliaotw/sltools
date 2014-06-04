@@ -1,6 +1,12 @@
-## Combine MI lmer results and put into a data frame
-combineLmerMI <- function(obj, m = NULL, fitted.obj = NULL) {
+#' A sltools function to combine lmer model results fitted to multiply imputed datasets
+#' 
+#' This function allows you to combine lmer results from the lme4 package, extract results for the texreg package, and also put into a data frame.
+#' @param fitted.obj a list of glm fitted model outputs from the pscl package
+#' @export
+
+combineLmerMI <- function(fitted.obj = NULL) {
   # extract parameters
+  m <- length(fitted.obj)
   coef <- as.data.frame(laply(fitted.obj, function(x) fixef(x))) 
   se <- as.data.frame(laply(fitted.obj, function(x) sqrt(diag(vcov(x))))) 
   n <- sapply(fitted.obj, function(x) nobs(x))

@@ -1,4 +1,4 @@
-#' A slTools function to combine zero-inflated count model results fitted to multiply imputed datasets
+#' A sltools function to combine zero-inflated count model results fitted to multiply imputed datasets
 #' 
 #' This function allows you to combine MI zero-inflated results from the pscl package, extract results for the texreg package, and also put into a data frame.
 #' @param fitted.obj a list of hurdle fitted model outputs from the pscl package

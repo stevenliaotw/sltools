@@ -1,4 +1,4 @@
-#' A slTools function to simulate first differences for negative binomial models
+#' A sltools function to simulate first differences for negative binomial models
 #' 
 #' This function uses the \code{computeNegBinEV} function to simulate expected values, predicted values, and first differences for negative binomial models.
 #' @param data imputed datasets in amelia object

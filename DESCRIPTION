@@ -1,12 +1,11 @@
-Package: slTools
+Package: sltools
 Type: Package
 Title: A collection of tools by Steven Liao
-URL: https://github.com/stevenliaotw/slTools
+URL: https://github.com/stevenliaotw/sltools
 Version: 0.0.1
-Date: 2014-05-10
 Author: Steven Liao
 Maintainer: Steven Liao <stevenliao@virginia.edu>
-Description: slTools provides an array tools including functions to combine multiple
+Description: sltools provides an array tools including functions to combine multiple
     imputation model results that Zelig does not implement, and feed the results to
     the texreg package to facilitate presentation of results.
 License: GPL

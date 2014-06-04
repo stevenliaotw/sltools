@@ -1,4 +1,4 @@
-#' A slTools function to combine glm model results fitted to multiply imputed datasets
+#' A sltools function to combine glm model results fitted to multiply imputed datasets
 #' 
 #' This function allows you to combine glm results from the stats package, extract results for the texreg package, and also put into a data frame.
 #' @param fitted.obj a list of glm fitted model outputs from the pscl package

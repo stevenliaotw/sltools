@@ -1,4 +1,16 @@
-## Extract texregMIrelogit object parameters
+#' A sltools function to extract and create a new texreg class
+#' 
+#' This function extracts parameters from multiple imputation relogit objects and stores them in a new texreg object called "texregMIrelogit," which feeds into the texreg package.
+#' @param names vector of variable names
+#' @param coef vector of coefficients
+#' @param se vector of standard errors
+#' @param pval vector of p-values
+#' @param n scalar of sample size
+#' @param aic scalar of AIC
+#' @name texregMIrelogit
+#' @rdname texregMIrelogit
+#' @export texregMIrelogit
+
 library(texreg)
 # First, create a class definition for relogit regression objects. Let's call them "texregMIrelogit":
 setClass(Class = "texregMIrelogit", 

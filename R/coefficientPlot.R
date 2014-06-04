@@ -1,4 +1,4 @@
-#' A slTools coefficient plotting function
+#' A sltools coefficient plotting function
 #' 
 #' This function allows you to extract coefficients from a list of models and create side-by-side coefplots.
 #' @param models a list of models

@@ -1,4 +1,4 @@
-#' A slTools function to simulate first differences for logit models
+#' A sltools function to simulate first differences for logit models
 #' 
 #' This function uses the \code{computeLogitEV} function to simulate expected values, predicted values, and first differences for logit models.
 #' @param data imputed datasets in amelia object
