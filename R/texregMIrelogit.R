@@ -14,13 +14,18 @@
 library(texreg)
 # First, create a class definition for relogit regression objects. Let's call them "texregMIrelogit":
 setClass(Class = "texregMIrelogit", 
-         representation=representation(names = "character",
-                                       coef = "numeric",
-                                       se = "numeric",
-                                       pval = "numeric",
-                                       n = "numeric",
-                                       aic = "numeric")
+         representation = representation(names = "character",
+                                         coef = "numeric",
+                                         se = "numeric",
+                                         pval = "numeric",
+                                         n = "numeric",
+                                         aic = "numeric")
 )
+
+# Next, create a constructor that allows you to create new objects:
+texregMIrelogit <- function(names, coef, se, pval, n, aic) {
+  new("texregMIrelogit", names = names, coef = coef, se = se, pval = pval, n = n, aic = aic)
+}
 
 # Then write an extension that translates texregMIrelogit objects into texreg objects:
 extract.texregMIrelogit <- function(model) {
@@ -31,7 +36,7 @@ extract.texregMIrelogit <- function(model) {
     pvalues = model@pval, 
     gof.names = c("Num obs.", "AIC"), 
     gof = c(model@n, model@aic), 
-    gof.decimal = c(FALSE,TRUE)
+    gof.decimal = c(FALSE, TRUE)
   )
   return(tr)
 }
