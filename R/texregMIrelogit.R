@@ -10,6 +10,7 @@
 #' @name texregMIrelogit
 #' @rdname texregMIrelogit
 #' @export texregMIrelogit
+#' @import methods
 
 #library(texreg)
 # First, create a class definition for relogit regression objects. Let's call them "texregMIrelogit":

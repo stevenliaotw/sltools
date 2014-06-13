@@ -12,5 +12,6 @@ Depends:
     R (>= 3.0.2),
     texreg,
     plyr,
-    ggplot2
+    ggplot2,
+    methods
 License: GPL

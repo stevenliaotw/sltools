@@ -11,6 +11,7 @@
 #' @name texregMI
 #' @rdname texregMI
 #' @export texregMI
+#' @import methods
 
 # First, create a class definition for your regression objects. Let's call them "texregMI":
 #library(texreg)

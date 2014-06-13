@@ -7,6 +7,7 @@
 #' @param hurdle.out a list of hurdle model outputs
 #' @param num number of simulations
 #' @export 
+#' @import plyr
 
 simHurdle <- function(data = NULL, x = NULL, x1 = NULL, hurdle.out = NULL, num = NULL){
   #library(plyr)

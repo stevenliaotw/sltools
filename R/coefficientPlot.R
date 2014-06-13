@@ -9,6 +9,7 @@
 #' @param omit.intercept whether to omit intercept, default = TRUE
 #' @param omit.factor whether to omit factors, default = TRUE
 #' @export
+#' @import ggplot2
 
 coefficientPlot <- function(models, alpha = 0.05, model.names = "", var.order = "", var.names = NULL, omit.intercept = TRUE, omit.factor = TRUE){
   # models must be a list()
