@@ -50,7 +50,7 @@ coefficientPlot <- function(models, alpha = 0.05, model.names = "", var.order = 
   
   # re-order the levels of model names based on user input
   MatrixofModels$ModelName <- factor(MatrixofModels$ModelName, levels = model.names)
-  library(ggplot2)
+  #library(ggplot2)
   OutputPlot <- qplot(IV, Estimate, ymin = Estimate - Multiplier * StandardError,
                       ymax = Estimate + Multiplier * StandardError, data = MatrixofModels, geom = "pointrange",
                       ylab = NULL, xlab = NULL)

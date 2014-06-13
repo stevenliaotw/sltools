@@ -9,10 +9,8 @@ Description: sltools provides an array of tools including functions to combine
     multiple imputation count model results from the pscl package, feed
     the results to the texreg package, and output LaTeX or HTML result tables.
 Depends:
-    R (>= 3.0.2)
-Imports:
+    R (>= 3.0.2),
     texreg,
     plyr,
-    ggplot2,
-    methods
+    ggplot2
 License: GPL

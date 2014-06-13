@@ -11,7 +11,7 @@
 #' @rdname texregMIrelogit
 #' @export texregMIrelogit
 
-library(texreg)
+#library(texreg)
 # First, create a class definition for relogit regression objects. Let's call them "texregMIrelogit":
 setClass(Class = "texregMIrelogit", 
          representation = representation(names = "character",

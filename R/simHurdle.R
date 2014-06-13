@@ -9,7 +9,7 @@
 #' @export 
 
 simHurdle <- function(data = NULL, x = NULL, x1 = NULL, hurdle.out = NULL, num = NULL){
-  library(plyr)
+  #library(plyr)
   qi.zero <- qiLogit(data = data, x = x, x1 = x1,
                      coef = as.data.frame(laply(hurdle.out, function(x) coef(x, model = "zero"))), 
                      vcov = llply(hurdle.out, function(x) vcov(x, model = "zero")), 

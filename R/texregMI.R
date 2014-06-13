@@ -13,7 +13,7 @@
 #' @export texregMI
 
 # First, create a class definition for your regression objects. Let's call them "texregMI":
-library(texreg)
+#library(texreg)
 setClass(Class = "texregMI", 
          representation = representation(names = "character",
                                          coef = "numeric",
