@@ -3,12 +3,13 @@
 #' This sltools function allows you to combine lmer results from the lme4 package, extract results for the texreg package, and also output a summary table.
 #' @param fitted.obj a list of lmer fitted model outputs from the lme4 package
 #' @export
-
+#' @import lme4
+ 
 combineLmerMI <- function(fitted.obj = NULL) {
   # extract parameters
   m <- length(fitted.obj)
   coef <- as.data.frame(laply(fitted.obj, function(x) fixef(x))) 
-  se <- as.data.frame(laply(fitted.obj, function(x) sqrt(diag(vcov(x))))) 
+  se <- as.data.frame(laply(fitted.obj, function(x) vcov(x)@factors$correlation@sd)) 
   n <- sapply(fitted.obj, function(x) nobs(x))
   loglik <- sapply(fitted.obj, function(x) logLik(x))
   aic <- sapply(fitted.obj, function(x) AIC(x))

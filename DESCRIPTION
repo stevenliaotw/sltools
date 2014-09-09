@@ -13,5 +13,6 @@ Depends:
     texreg,
     plyr,
     ggplot2,
-    methods
+    methods,
+    lme4
 License: GPL
