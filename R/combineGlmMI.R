@@ -63,6 +63,7 @@ combineGlmMI <- function(fitted.obj = NULL) {
        "loglik" = mean(loglik),
        "aic" = mean(aic),
        "sum.table" = coef.table,
-       "texreg" = texreg
+       "texreg" = texreg,
+       "dof" = nu
   )
 }
