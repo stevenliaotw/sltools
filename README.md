@@ -9,5 +9,6 @@ You can install:
 
     ```R
     install.packages("devtools")
-    install.packages("stevenliaotw/sltools")
+    library(devtools)
+    install.github("stevenliaotw/sltools")
     ````
