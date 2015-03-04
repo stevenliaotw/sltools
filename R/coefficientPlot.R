@@ -9,54 +9,56 @@
 #' @param omit.intercept whether to omit intercept, default = TRUE
 #' @param omit.factor whether to omit factors, default = TRUE
 #' @export
-#' @import ggplot2
 
 coefficientPlot <- function(models, alpha = 0.05, model.names = "", var.order = "", var.names = NULL, omit.intercept = TRUE, omit.factor = TRUE){
-  # models must be a list()
+  
   Multiplier <- qnorm(1 - alpha / 2)
-  CoefficientTables <- lapply(models, function(x) coef(x))
-  TableRows <- unlist(lapply(CoefficientTables, nrow))
   
-  if(model.names[1] == ""){
-    ModelNameLabels <- rep(paste("Model", 1:length(TableRows)), TableRows)
-  } else {
-    ModelNameLabels <- rep(model.names, TableRows)
-  }
+  CoefficientTables <- ldply(1:length(models), function(x) {
+    out <- as.data.frame(summary(models[[x]])$coef)
+    out$variable <- rownames(summary(models[[x]])$coef)
+    
+    if(model.names[1] == ""){
+      out$model <- paste("Model", x, sep = "")
+    } else {
+      out$model <- model.names[[x]]
+    }
+    
+    return(out)
+  })
   
-  MatrixofModels <- cbind(do.call(rbind, CoefficientTables), ModelNameLabels)
-  MatrixofModels <- data.frame(cbind(rownames(MatrixofModels), MatrixofModels))
-  colnames(MatrixofModels) <- c("IV", "Estimate", "StandardError", "TValue", "PValue", "ModelName")
-  MatrixofModels[, -c(1, 6)] <- apply(MatrixofModels[, -c(1, 6)], 2, function(x){as.numeric(as.character(x))})
+  colnames(CoefficientTables) <- c("Estimate", "StandardError", "TValue", "PValue", "IV", "ModelName")
   
   # exclude rows of intercepts
   if(omit.intercept == TRUE){
-    MatrixofModels <- MatrixofModels[!grepl("Intercept", MatrixofModels$IV),]
+    CoefficientTables <- filter(CoefficientTables, !grepl("Intercept", IV)) 
   } else {
-    MatrixofModels <- MatrixofModels
+    CoefficientTables <- CoefficientTables
   }
   
   # exclude rows of intercepts and factor
   if(omit.factor == TRUE){
-    MatrixofModels <- MatrixofModels[!grepl("factor", MatrixofModels$IV),]
+    CoefficientTables <- filter(CoefficientTables, !grepl("factor", IV))
   } else {
-    MatrixofModels <- MatrixofModels
+    CoefficientTables <- CoefficientTables
   }
   
   # re-order the levels of variables in the order of appearance in the data.frame
   if(var.order[1] == ""){
-    MatrixofModels$IV <- factor(MatrixofModels$IV, levels = rev(unique(as.character(MatrixofModels$IV))))
+    CoefficientTables$IV <- factor(CoefficientTables$IV, levels = rev(unique(as.character(CoefficientTables$IV))))
   } else {
-    MatrixofModels$IV <- factor(MatrixofModels$IV, levels = rev(var.order))
+    CoefficientTables$IV <- factor(CoefficientTables$IV, levels = rev(var.order))
   }
   
   # re-order the levels of model names based on user input
-  MatrixofModels$ModelName <- factor(MatrixofModels$ModelName, levels = model.names)
+  CoefficientTables$ModelName <- factor(CoefficientTables$ModelName, levels = model.names)
+  
   #library(ggplot2)
   OutputPlot <- qplot(IV, Estimate, ymin = Estimate - Multiplier * StandardError,
-                      ymax = Estimate + Multiplier * StandardError, data = MatrixofModels, geom = "pointrange",
+                      ymax = Estimate + Multiplier * StandardError, data = CoefficientTables, geom = "pointrange",
                       ylab = NULL, xlab = NULL)
-  OutputPlot <- OutputPlot + scale_x_discrete(labels = rev(var.names.fig))
+  OutputPlot <- OutputPlot + scale_x_discrete(labels = rev(var.names))
   OutputPlot <- OutputPlot + geom_hline(yintercept = 0, lwd = I(7/12), colour = I(hsv(0/12, 7/12, 7/12)), alpha = I(5/12))
   OutputPlot <- OutputPlot + facet_grid(~ ModelName) + coord_flip() + theme_bw()
-  return(OutputPlot)
+  print(OutputPlot)
 }

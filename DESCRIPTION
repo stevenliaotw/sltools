@@ -12,6 +12,7 @@ Depends:
     R (>= 3.0.2),
     texreg,
     plyr,
+    dplyr,
     ggplot2,
     methods,
     lme4
