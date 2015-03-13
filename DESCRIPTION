@@ -2,18 +2,18 @@ Package: sltools
 Type: Package
 Title: sltools: A collection of R functions and tools by Steven Liao
 URL: https://github.com/stevenliaotw/sltools
-Version: 0.0.1
-Author: Steven Liao <stevenliao@virginia.edu>
+Version: 0.0.2
+Author: person("Steven", "Liao", email =
+    "stevenliao@virginia.edu", role = c("cre"))
 Maintainer: Steven Liao <stevenliao@virginia.edu>
 Description: sltools provides an array of tools including functions to combine
     multiple imputation count model results from the pscl package, feed
     the results to the texreg package, and output LaTeX or HTML result tables.
-Depends:
-    R (>= 3.0.2),
+Depends: R (>= 3.0.2),
     texreg,
     plyr,
     dplyr,
     ggplot2,
     methods,
     lme4
-License: GPL
+License: CCO
