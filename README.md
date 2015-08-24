@@ -10,5 +10,5 @@ You can install:
     ```R
     install.packages("devtools")
     library(devtools)
-    install.github("stevenliaotw/sltools")
+    install_github("stevenliaotw/sltools")
     ````
