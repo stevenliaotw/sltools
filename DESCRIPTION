@@ -2,7 +2,7 @@ Package: sltools
 Type: Package
 Title: sltools: A collection of R functions and tools by Steven Liao
 URL: https://github.com/stevenliaotw/sltools
-Version: 0.0.2
+Version: 0.0.3
 Author: Steven Liao <stevenliao@virginia.edu>
 Maintainer: Steven Liao <stevenliao@virginia.edu>
 Description: sltools provides an array of tools including functions to combine

@@ -7,7 +7,7 @@
 combineGlmMI(fitted.obj = NULL)
 }
 \arguments{
-\item{fitted.obj}{a list of glm fitted model outputs from the pscl package}
+\item{fitted.obj}{a list of glm fitted model outputs}
 }
 \description{
 This sltools function allows you to combine multiple imputation glm model results from the stats package, extract results for the texreg package, and also output summary tables.

@@ -14,10 +14,6 @@
 \item{pval}{vector of p-values}
 
 \item{n}{scalar of sample size}
-
-\item{loglik}{scalar of log-likelihood}
-
-\item{aic}{scalar of AIC}
 }
 \description{
 This function extracts parameters from Zelig 3.5.5 lm objects with robust SEs and stores them in a new texreg object called "texregLmRobust," which feeds into the texreg package.

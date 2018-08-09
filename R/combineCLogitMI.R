@@ -1,15 +1,15 @@
-#' Combine glm model results fitted to multiply imputed datasets
+#' Combine conditional logit model results fitted to multiply imputed datasets
 #' 
-#' This sltools function allows you to combine multiple imputation glm model results from the stats package, extract results for the texreg package, and also output summary tables.
-#' @param fitted.obj a list of glm fitted model outputs
+#' This sltools function allows you to combine multiple imputation conditional logit model results from the survival package, extract results for the texreg package, and also output summary tables.
+#' @param fitted.obj a list of conditional logit fitted model outputs from the survival package
 #' @export
 
-combineGlmMI <- function(fitted.obj = NULL) {
+combineCLogitMI <- function(fitted.obj = NULL) {
   # extract parameters
   m <- length(fitted.obj)
   coef <- as.data.frame(laply(fitted.obj, function(x) coef(x))) 
   se <- as.data.frame(laply(fitted.obj, function(x) sqrt(diag(vcov(x))))) 
-  n <- sapply(fitted.obj, function(x) nobs(x))
+  n <- sapply(full.clogit.us, function(x) x$n)
   loglik <- sapply(fitted.obj, function(x) logLik(x))
   aic <- sapply(fitted.obj, function(x) AIC(x))
   vcov <- llply(fitted.obj, function(x) vcov(x))

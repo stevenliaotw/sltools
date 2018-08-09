@@ -6,8 +6,6 @@
 #' @param se vector of standard errors
 #' @param pval vector of p-values
 #' @param n scalar of sample size
-#' @param loglik scalar of log-likelihood
-#' @param aic scalar of AIC
 #' @name texregLmRobust
 #' @rdname texregLmRobust
 #' @export texregLmRobust
